@@ -21,6 +21,7 @@ const App = () => {
 
   const [title, setTitle] = useState<string>("")
   const [content, setContent] = useState<string>("")
+  const [selectedNoteId, setSelectedNoteId] = useState<number | null>(null)
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -37,18 +38,43 @@ const App = () => {
   const handleDeleteClick = (id: number) => {
     setNoteList(noteList => noteList.filter((note) => note.id !== id));
   }
+  const handleNoteClick = (id: number) => {
+    const note = noteList.find(note => note.id === id) as NoteType
+    setTitle(note?.title)
+    setContent(note?.content)
+    setSelectedNoteId(id)
+  }
+
+  const handleUpdateNote = (event: React.FormEvent) => {
+    event.preventDefault()
+    if (selectedNoteId == null) return;
+
+    const updatedNote: NoteType = {
+      id: selectedNoteId,
+      title: title,
+      content: content
+    }
+
+    setNoteList(noteList.map(note => note.id == selectedNoteId ? updatedNote : note))
+    setTitle("")
+    setContent("")
+    setSelectedNoteId(null)
+  }
 
   return (
     <div className="app-container">
-      <form className="note-form" onSubmit={(e) => handleSubmit(e)}>
+      <form className="note-form" onSubmit={(e) => selectedNoteId? handleUpdateNote(e) : handleSubmit(e)}>
         <input type="text" placeholder="Title" required value={title} onChange={(e) => setTitle(e.target.value)} />
         <textarea placeholder="Content" required value={content} onChange={(e) => setContent(e.target.value)} />
-        <button type="submit">Add note</button>
+
+        {selectedNoteId ? <button type="submit">Update Note</button> :
+          <button type="submit">Add note</button>
+        }
       </form>
       <NoteGrid>
         {
           noteList.map((note) => {
-            return <Note key={note.id} title={note.title} content={note.content} onDeleteClick={() => handleDeleteClick(note.id)}  />
+            return <Note key={note.id} title={note.title} content={note.content} onNoteClick={() => handleNoteClick(note.id)} onDeleteClick={() => handleDeleteClick(note.id)} />
           })
         }
       </NoteGrid>
