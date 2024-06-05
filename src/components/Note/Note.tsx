@@ -1,13 +1,16 @@
+import React from 'react'
 type Prop = {
-    title: string,
-    content: string
+    // id: number;
+    title: string;
+    content: string;
+    onDeleteClick: () => void;
 }
 
-function Note({title, content} : Prop) {
+function Note({ title, content, onDeleteClick} : Prop) {
     return (
         <div className="note-item">
             <div className="note-header">
-                <button>x</button>
+                <button onClick={onDeleteClick}>x</button>
             </div>
             <h2>{title}</h2>
             <p>{content}</p>
