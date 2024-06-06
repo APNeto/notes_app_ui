@@ -32,6 +32,9 @@ body {
 .note-form {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  padding: 5px;
+  border: 2px solid;
 }
 
 .note-header {
@@ -65,4 +68,42 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.update-buttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 5px;
+}
+
+.update-buttons button {
+  padding: 5px;
+  flex: 1;
+  cursor: pointer;
+  color: white;
+  text-shadow:0px 1px 0px #2f6627;
+}
+
+#addButton {
+  color: white;
+  background-color: blue;
+  border:1px solid #1a0ec4;
+  box-shadow:inset 0px -2px 6px 0px #1406d1;
+  padding: 5px 18px;
+}
+
+#updateButton {
+  /* background:linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%); */
+  background: green;
+	background-color:#09b111;
+  border:1px solid #14a325;
+  box-shadow:inset 0px -3px 7px 0px #3dc21b;
+  padding: 5px 18px;
+}
+
+#cancelUpdateButton {
+  background-color: red;
+  border:1px solid #c40e0e;
+  box-shadow:inset 0px -2px 6px 0px #d10606;
+  padding: 5px 18px;
 }

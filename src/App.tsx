@@ -61,14 +61,25 @@ const App = () => {
     setSelectedNoteId(null)
   }
 
+  const handleReset = () => {
+    setTitle("")
+    setContent("")
+    setSelectedNoteId(null)
+  }
+
   return (
     <div className="app-container">
-      <form className="note-form" onSubmit={(e) => selectedNoteId? handleUpdateNote(e) : handleSubmit(e)}>
+      <form className="note-form" onSubmit={(e) => selectedNoteId ? handleUpdateNote(e) : handleSubmit(e)} onReset={()=>handleReset()}>
         <input type="text" placeholder="Title" required value={title} onChange={(e) => setTitle(e.target.value)} />
         <textarea placeholder="Content" required value={content} onChange={(e) => setContent(e.target.value)} />
 
-        {selectedNoteId ? <button type="submit">Update Note</button> :
-          <button type="submit">Add note</button>
+        {selectedNoteId ?
+          <div className="update-buttons">
+            <button type="submit" id="updateButton">Update Note</button>
+            <button type="reset" id="cancelUpdateButton">Cancel</button>
+          </div>
+          :
+          <button type="submit" id="addButton">Add note</button>
         }
       </form>
       <NoteGrid>
