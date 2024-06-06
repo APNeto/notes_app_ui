@@ -69,9 +69,9 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <form className="note-form" onSubmit={(e) => selectedNoteId ? handleUpdateNote(e) : handleSubmit(e)} onReset={()=>handleReset()}>
+      <form className="note-form" onSubmit={(e) => selectedNoteId ? handleUpdateNote(e) : handleSubmit(e)} onReset={() => handleReset()}>
         <input type="text" placeholder="Title" required value={title} onChange={(e) => setTitle(e.target.value)} />
-        <textarea placeholder="Content" required value={content} onChange={(e) => setContent(e.target.value)} />
+        <textarea placeholder="Content" rows={10} required value={content} onChange={(e) => setContent(e.target.value)} />
 
         {selectedNoteId ?
           <div className="update-buttons">

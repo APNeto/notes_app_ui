@@ -7,19 +7,41 @@ body {
   background-color: grey;
 }
 
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
 .app-container {
   background-color: rgb(175, 175, 175);
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px
 }
 
 @media (min-width: 600px) {
   .app-container {
-    background-color: rgb(175, 175, 175);
-    display: grid;
-    grid-template-columns: 250px 1fr;
+    
+    grid-template-columns: 220px 1fr;
+    gap: 20px;
   }
+}
+
+.note-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+textarea, input {
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
 }
 
 .notes-grid {
@@ -27,14 +49,6 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-auto-rows: minmax(250px, auto);
   gap: 20px
-}
-
-.note-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 5px;
-  border: 2px solid;
 }
 
 .note-header {
@@ -59,15 +73,18 @@ body {
   cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+#addButton {
   color: white;
+  background-color: rgb(0, 0, 255);
+  border:1px solid rgb(26, 14, 196);
+  border-radius: 5px;
+  box-shadow:inset 0px -2px 6px 0px #1406d1;
+  text-shadow:0px 1px 0px #273066;
+  padding: 10px 18px;
+}
+
+#addButton:hover {
+  background-color: rgb(80, 86, 202);
 }
 
 .update-buttons {
@@ -81,15 +98,6 @@ body {
   flex: 1;
   cursor: pointer;
   color: white;
-  text-shadow:0px 1px 0px #2f6627;
-}
-
-#addButton {
-  color: white;
-  background-color: blue;
-  border:1px solid #1a0ec4;
-  box-shadow:inset 0px -2px 6px 0px #1406d1;
-  padding: 5px 18px;
 }
 
 #updateButton {
@@ -97,13 +105,17 @@ body {
   background: green;
 	background-color:#09b111;
   border:1px solid #14a325;
+  border-radius: 5px;
   box-shadow:inset 0px -3px 7px 0px #3dc21b;
+  text-shadow:0px 1px 0px #2f6627;
   padding: 5px 18px;
 }
 
 #cancelUpdateButton {
   background-color: red;
   border:1px solid #c40e0e;
+  border-radius: 5px;
   box-shadow:inset 0px -2px 6px 0px #d10606;
+  text-shadow:0px 1px 0px #662727;
   padding: 5px 18px;
 }
